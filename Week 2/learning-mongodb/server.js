@@ -8,18 +8,15 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 //connect to DB
-mongoose.connect('mongodb://localhost:27017/inventorydb',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  },
-  () => console.log("Connected to the DB")
-)
-
+main().catch(err => console.log(err));
+  async function main() {
+      await mongoose.connect('mongodb://localhost:27017/inventorydb');
+      console.log("Connected to the DB")
+  }
 
 //routes
+app.use("/inventory", require("./routes/inventoryRouter.js"))
+
 
 //error handling
 app.use((err, req, res, next) => {
@@ -30,4 +27,4 @@ app.use((err, req, res, next) => {
 //Server Listen
 app.listen(9000, () => {
     console.log("The server is running on port 9000")
-})
+}) 

@@ -5,7 +5,7 @@ import Todo from './Issue.js'
 export default function Public(){
   return (
     <div className="public">
-      asuh
+      This part of the site is under maint.
     </div>
   )
 }

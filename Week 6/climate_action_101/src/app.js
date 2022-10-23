@@ -21,7 +21,10 @@ export default function App(){
           path="/" 
           element={hasToken()}
         />
-        <Route path="/profile" element={ <ProtectedRoute Component={Profile}/>} />
+        <Route 
+          path="/profile" 
+          element={ <ProtectedRoute Component={Profile}/>} 
+          />
         <Route 
           path="/public"
           element={<Public />}
